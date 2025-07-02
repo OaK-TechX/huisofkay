@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huis of Kay – The Quantum Omen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0e10;
+      --accent: #00ffe0;
+      --text: #ffffff;
+      --muted: #888;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: clamp(1.1rem, 4vw, 1.25rem);
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .cover-placeholder {
+      width: 100%;
+      max-width: 350px;
+      aspect-ratio: 2 / 3;
+      background-color: #1c1c1f;
+      border: 2px dashed var(--muted);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .cover-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .teaser {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 550px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .coming-soon {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 1.5rem 0;
+    }
+    
+    .beehiiv-form-container {
+        width: 100%;
+        max-width: 561px; /* Match iframe width */
+        margin: 1rem 0;
+    }
+
+    /* The iframe provided has inline styles, which are hard to override without !important. 
+        This container helps manage its placement. */
+    .beehiiv-embed {
+        width: 100% !important; /* Overriding inline style for responsiveness */
+        max-width: 561px;
+        height: 257px;
+        margin: 0;
+        border-radius: 0 !important;
+        background-color: transparent;
+        box-shadow: none !important;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-top: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    /* New CSS for image positioning */
+
+    /* Hide image on mobile by default */
+    .cover-placeholder {
+        display: none; 
+    }
+
+    /* Desktop styles: display image on the side */
+    @media (min-width: 768px) { /* Adjust breakpoint as needed for desktop */
+        body {
+            flex-direction: row; /* Arrange items in a row */
+            justify-content: center; /* Center content horizontally */
+            align-items: flex-start; /* Align items to the top */
+            text-align: left; /* Align text to the left for better readability */
+            padding: 4rem 2rem; /* More padding for desktop */
+        }
+
+        .cover-placeholder {
+            display: flex; /* Show image on desktop */
+            width: 300px; /* Fixed width for the image on desktop */
+            max-width: none; /* Remove max-width constraint */
+            margin-right: 3rem; /* Space between image and text content */
+            margin-bottom: 0; /* Remove bottom margin */
+        }
+
+        h1, h2, .teaser, .coming-soon, .beehiiv-form-container, footer {
+            text-align: left; /* Ensure text aligns left */
+            margin-left: 0; /* Reset auto margins */
+            margin-right: 0; /* Reset auto margins */
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 550px; /* Constrain content width */
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cover-placeholder">
+    <img 
+      src="./TQO-Book1_Cover-Page.png" 
+      alt="Book Cover for The Quantum Omen"
+      onerror="this.onerror=null;this.src='./The_Quantum_Omen_ Awakening_Cover_Page.png';" />
+  </div>
+
+  <div class="content-wrapper">
+    <h1>Huis of Kay</h1>
+    <h2>Stories born of memory and code</h2>
+
+    <p class="teaser">
+      <strong>The Quantum Omen</strong> is an Afrofuturist saga blending Igbo myth and ancestral tech. Join us as we awaken memory through sound, story, and spirit. Launching July 15, 2025.
+    </p>
+
+    <p class="coming-soon">🌐 Full website experience coming soon. Subscribe for updates.</p>
+
+    <div class="beehiiv-form-container">
+      <iframe src="https://subscribe-forms.beehiiv.com/59d7d900-a729-4ff8-a143-80a06f60f79c" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no"></iframe>
+    </div>
+    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+    <footer>
+      © 2025 Huis of Kay. Designed with story and spirit.
+    </footer>
+  </div>
+
+</body>
+</html>
