@@ -4,16 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="facebook-domain-verification" content="3ukup5ycjobrok4jkmkvxsvivcezlp" />
-  <title>Huis of Kay – The Quantum Omen</title>
+  <title>Huis of Kay – Epic Fantasy Worlds | The Quantum Omen</title>
+  <meta name="description" content="Epic fantasy storytelling across multiple worlds. Experience The Quantum Omen, where ancient symbols meet modern technology. Coming soon: Veiled Divinity, Veiled Flame Saga, and more immersive fantasy adventures.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0e0e10;
-      --accent: #00ffe0;
-      --text: #ffffff;
-      --muted: #888;
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #16213e;
+      --bg-card: #1a1d29;
+      --accent-gold: #ffd700;
+      --accent-blue: #4a90e2;
+      --accent-purple: #9b59b6;
+      --text-primary: #ffffff;
+      --text-secondary: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
+      --shadow: rgba(0, 0, 0, 0.3);
+      --glow-gold: rgba(255, 215, 0, 0.4);
+      --glow-blue: rgba(74, 144, 226, 0.3);
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
     }
 
     * {
@@ -22,162 +34,1073 @@
       padding: 0;
     }
 
-    html, body {
-      height: 100%;
-      width: 100%;
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      text-align: center;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(74, 144, 226, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(155, 89, 182, 0.15) 0%, transparent 50%),
+        linear-gradient(135deg, var(--bg-primary) 0%, #1a1a2e 100%);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
     }
 
-    h1 {
-      font-size: clamp(2rem, 5vw, 2.5rem);
-      margin-bottom: 0.5rem;
-    }
-
-    h2 {
-      font-size: clamp(1.1rem, 4vw, 1.25rem);
-      color: var(--muted);
-      margin-bottom: 2rem;
-      font-weight: 400;
-    }
-
-    .cover-placeholder {
+    /* Enhanced Mobile-First Header */
+    header {
+      position: fixed;
+      top: 0;
       width: 100%;
-      max-width: 350px;
-      aspect-ratio: 2 / 3;
-      background-color: #1c1c1f;
-      border: 2px dashed var(--muted);
-      border-radius: 8px;
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 0.75rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .header-scroll {
+      background: rgba(10, 10, 15, 0.98);
+      box-shadow: 0 4px 20px var(--shadow);
+    }
+
+    nav {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+      text-shadow: 0 0 20px var(--glow-gold);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-gold);
+      transform: translateY(-2px);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Enhanced Mobile-First Hero */
+    .hero {
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
+      padding: 6rem 1rem 2rem;
+      position: relative;
       overflow: hidden;
     }
 
-    .cover-placeholder img {
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, var(--glow-gold) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, var(--glow-blue) 0%, transparent 40%);
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 1400px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    .hero-text {
+      order: 2;
+      max-width: 100%;
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 8vw, 4.5rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      text-shadow: 0 0 30px var(--glow-gold);
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 4vw, 1.3rem);
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    .series-highlight {
+      background: rgba(255, 215, 0, 0.08);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(255, 215, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .series-highlight h3 {
+      color: var(--accent-gold);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 4vw, 1.4rem);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .series-highlight p {
+      color: var(--text-secondary);
+      font-size: clamp(0.9rem, 3vw, 1rem);
+      line-height: 1.6;
+    }
+
+    .launch-date {
+      background: var(--gradient-gold);
+      color: var(--bg-primary);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: clamp(0.9rem, 3vw, 1rem);
+      display: inline-block;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px var(--glow-gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-description {
+      font-size: clamp(1rem, 3vw, 1.1rem);
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      max-width: 600px;
+      opacity: 0.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 400px;
+      align-items: center;
+    }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: var(--gradient-gold);
+      color: var(--bg-primary);
+      border: none;
+      box-shadow: 0 8px 25px var(--glow-gold);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px var(--glow-gold);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid var(--accent-gold);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-gold);
+      color: var(--bg-primary);
+      transform: translateY(-2px);
+    }
+
+    /* Enhanced Mobile-First Book Cover */
+    .hero-visual {
+      order: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .book-cover {
+      width: 280px;
+      height: 420px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 40px var(--glow-gold);
+      transform: perspective(1000px) rotateY(-8deg) rotateX(5deg);
+      transition: all 0.5s ease;
+      position: relative;
+    }
+
+    .book-cover::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255, 215, 0, 0.1) 100%);
+      z-index: 1;
+    }
+
+    .book-cover:hover {
+      transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.05);
+      box-shadow: 
+        0 35px 70px rgba(0, 0, 0, 0.6),
+        0 0 60px var(--glow-gold);
+    }
+
+    .book-cover img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .teaser {
-      font-size: 1.05rem;
+    /* Enhanced Mobile-First Coming Soon */
+    .coming-soon-section {
+      padding: 4rem 1rem;
+      background: var(--bg-secondary);
+      position: relative;
+    }
+
+    .coming-soon-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 30% 20%, rgba(155, 89, 182, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900;
+    }
+
+    .series-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .series-card {
+      background: rgba(26, 29, 41, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .series-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-gold);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .series-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .series-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px var(--shadow);
+      border-color: rgba(255, 215, 0, 0.3);
+    }
+
+    .series-card .genre {
+      color: var(--accent-gold);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .series-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--text-primary);
+      font-size: clamp(1.3rem, 4vw, 1.6rem);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .series-card p {
+      color: var(--text-secondary);
       line-height: 1.6;
-      max-width: 550px;
-      margin: 0 auto 1.5rem;
+      font-size: clamp(0.9rem, 3vw, 1rem);
     }
 
-    .coming-soon {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin: 1.5rem 0;
+    /* Enhanced Mobile-First Newsletter */
+    .newsletter-section {
+      padding: 4rem 1rem;
+      background: 
+        linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+      text-align: center;
+      position: relative;
     }
-    
+
+    .newsletter-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 50% 50%, var(--glow-gold) 0%, transparent 70%);
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    .newsletter-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      margin-bottom: 1rem;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900;
+      position: relative;
+      z-index: 1;
+    }
+
+    .newsletter-description {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
     .beehiiv-form-container {
-        width: 100%;
-        max-width: 561px; /* Match iframe width */
-        margin: 1rem 0;
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 40px var(--shadow);
+      position: relative;
+      z-index: 1;
     }
 
-    /* The iframe provided has inline styles, which are hard to override without !important. 
-        This container helps manage its placement. */
     .beehiiv-embed {
-        width: 100% !important; /* Overriding inline style for responsiveness */
-        max-width: 561px;
-        height: 257px;
-        margin: 0;
-        border-radius: 0 !important;
-        background-color: transparent;
-        box-shadow: none !important;
+      width: 100% !important;
+      height: 257px;
+      border-radius: 12px !important;
+      border: none !important;
     }
 
+    /* Enhanced Mobile-First Footer */
     footer {
-      color: var(--muted);
-      font-size: 0.8rem;
-      margin-top: 2rem;
-      padding-bottom: 1rem;
+      background: var(--bg-primary);
+      padding: 3rem 1rem 1rem;
+      border-top: 1px solid var(--border);
+      position: relative;
     }
 
-    /* New CSS for image positioning */
-
-    /* Hide image on mobile by default */
-    .cover-placeholder {
-        display: none; 
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
 
-    /* Desktop styles: display image on the side */
-    @media (min-width: 768px) { /* Adjust breakpoint as needed for desktop */
-        body {
-            flex-direction: row; /* Arrange items in a row */
-            justify-content: center; /* Center content horizontally */
-            align-items: flex-start; /* Align items to the top */
-            text-align: left; /* Align text to the left for better readability */
-            padding: 4rem 2rem; /* More padding for desktop */
-        }
+    .footer-section h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--accent-gold);
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
 
-        .cover-placeholder {
-            display: flex; /* Show image on desktop */
-            width: 300px; /* Fixed width for the image on desktop */
-            max-width: none; /* Remove max-width constraint */
-            margin-right: 3rem; /* Space between image and text content */
-            margin-bottom: 0; /* Remove bottom margin */
-        }
+    .footer-section p,
+    .footer-section a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      display: block;
+      transition: color 0.3s ease;
+    }
 
-        h1, h2, .teaser, .coming-soon, .beehiiv-form-container, footer {
-            text-align: left; /* Ensure text aligns left */
-            margin-left: 0; /* Reset auto margins */
-            margin-right: 0; /* Reset auto margins */
-        }
+    .footer-section a:hover {
+      color: var(--accent-gold);
+    }
 
-        .content-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            max-width: 550px; /* Constrain content width */
-        }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    .social-links a {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-gold);
+      color: var(--bg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 8px 25px var(--glow-gold);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .footer-bottom a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin: 0 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--accent-gold);
+    }
+
+    /* Mobile Navigation */
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 15, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        border-top: 1px solid var(--border);
+      }
+
+      .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .book-cover {
+        width: 240px;
+        height: 360px;
+      }
+    }
+
+    /* Tablet Styles */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero-content {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .hero-text {
+        order: 1;
+        flex: 1;
+      }
+
+      .hero-visual {
+        order: 2;
+        flex: 0 0 300px;
+      }
+
+      .cta-buttons {
+        flex-direction: row;
+        max-width: none;
+      }
+
+      .series-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Desktop Styles */
+    @media (min-width: 1025px) {
+      nav {
+        padding: 0 2rem;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+      }
+
+      .hero {
+        padding: 8rem 2rem 4rem;
+      }
+
+      .hero-content {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        gap: 4rem;
+      }
+
+      .hero-text {
+        order: 1;
+        flex: 1;
+        max-width: 600px;
+      }
+
+      .hero-visual {
+        order: 2;
+        flex: 0 0 350px;
+      }
+
+      .book-cover {
+        width: 320px;
+        height: 480px;
+      }
+
+      .cta-buttons {
+        flex-direction: row;
+        max-width: none;
+      }
+
+      .series-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .social-links {
+        justify-content: flex-start;
+      }
+
+      .coming-soon-section {
+        padding: 6rem 2rem;
+      }
+
+      .newsletter-section {
+        padding: 6rem 2rem;
+      }
+    }
+
+    /* Large Desktop */
+    @media (min-width: 1400px) {
+      .hero-visual {
+        flex: 0 0 400px;
+      }
+
+      .book-cover {
+        width: 350px;
+        height: 525px;
+      }
+    }
+
+    /* Scroll animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Loading animation */
+    .loading {
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
   </style>
 </head>
-<body>
+<body class="loading">
 
-  <div class="cover-placeholder">
-    <img 
-      src="./The_Quantum_Omen_ Awakening_Cover_Page.png" 
-      alt="Book Cover for The Quantum Omen"
-      onerror="this.onerror=null;this.src='./TQO-Book1_Cover-Page.png';" />
-  </div>
+  <!-- Enhanced Mobile-First Header -->
+  <header id="header">
+    <nav>
+      <a href="#" class="logo">Huis of Kay</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#series">Series</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="content-wrapper">
-    <h1>Huis of Kay</h1>
-    <h2>Stories born of memory and code</h2>
+  <!-- Enhanced Mobile-First Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-visual">
+        <div class="book-cover">
+          <img 
+            src="./tqo-cover-page.png" 
+            alt="The Quantum Omen Book Cover"
+            onerror="this.onerror=null;this.src='./tqo-cover-page2.png';" 
+            loading="lazy" />
+        </div>
+      </div>
 
-    <p class="teaser">
-      <strong>The Quantum Omen</strong> is an Afrofuturist saga blending Igbo myth and ancestral tech. Join us as we awaken memory through sound, story, and spirit. Launching August 1, 2025.
-    </p>
+      <div class="hero-text">
+        <h1>Epic Fantasy Worlds</h1>
+        <p class="hero-tagline">Immersive storytelling across multiple universes</p>
+        
+        <div class="series-highlight fade-in">
+          <h3>🔮 The Quantum Omen</h3>
+          <p>When 16-year-old Nnennaya accidentally activates ancient symbols, she triggers a global consciousness awakening. Contemporary fantasy meets Igbo culture in this groundbreaking Afrofuturist saga.</p>
+        </div>
 
-    <p class="coming-soon">🌐 Full website experience coming soon. Subscribe for updates.</p>
+        <div class="launch-date fade-in">📅 Foundation Release: August 1, 2025</div>
 
-    <div class="beehiiv-form-container">
-      <iframe src="https://subscribe-forms.beehiiv.com/59d7d900-a729-4ff8-a143-80a06f60f79c" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no"></iframe>
+        <p class="hero-description fade-in">
+          Experience the first of five epic fantasy series from Huis of Kay. Each world offers unique characters, intricate plots, and unforgettable adventures.
+        </p>
+
+        <div class="cta-buttons fade-in">
+          <a href="#community" class="btn-primary">Join the Adventure</a>
+          <a href="#series" class="btn-secondary">Explore All Worlds</a>
+        </div>
+      </div>
     </div>
-    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-    <footer>
-      © 2025 Huis of Kay. Designed with story and spirit. | <a href="./content_license.html">Content License/Terms</a> | <a href="./privacy_policy.html">Privacy Policy</a> | <a href="./legal_disclaimer.html">Legal Disclaimer</a>
-    </footer>
-  </div>
+  </section>
+
+  <!-- Enhanced Mobile-First Coming Soon -->
+  <section class="coming-soon-section" id="series">
+    <div class="container">
+      <h2 class="section-title fade-in">Epic Worlds Coming Soon</h2>
+      
+      <div class="series-grid">
+        <div class="series-card fade-in">
+          <div class="genre">Holy War Fantasy</div>
+          <h3>⚔️ The Veiled Divinity</h3>
+          <p>An epic conflict between light and shadow unfolds as ancient powers return to challenge the modern world. Divine warriors clash in a battle that will determine the fate of all existence.</p>
+        </div>
+
+        <div class="series-card fade-in">
+          <div class="genre">Multiverse Adventure</div>
+          <h3>🌌 The Veiled Flame Saga</h3>
+          <p>Journey across infinite realities where superpowered beings fight to protect the multiverse from cosmic threats. Reality itself becomes the battlefield in this mind-bending adventure.</p>
+        </div>
+
+        <div class="series-card fade-in">
+          <div class="genre">System Fantasy</div>
+          <h3>🥚 Alabaster Egg</h3>
+          <p>In a world where death and resurrection are systematized, heroes must navigate complex mechanics of life and death to save their realm from ultimate destruction.</p>
+        </div>
+
+        <div class="series-card fade-in">
+          <div class="genre">Creature Fantasy</div>
+          <h3>🐉 Creature of Aelyria</h3>
+          <p>Discover a world where diverse mystic creatures wield hidden influences over reality. Ancient bonds between species determine the balance of power in this enchanting realm.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center;" class="fade-in">
+        <p style="color: var(--text-secondary); font-size: clamp(1rem, 3vw, 1.1rem); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Each series offers 180,000+ words of immersive storytelling with unique worlds, compelling characters, and unforgettable adventures.
+        </p>
+        <a href="#community" class="btn-primary" style="max-width: 300px; display: inline-block;">Get Notified of New Releases</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Mobile-First Newsletter -->
+  <section class="newsletter-section" id="community">
+    <div class="container">
+      <h2 class="newsletter-title fade-in">Join the Huis of Kay Community</h2>
+      <p class="newsletter-description fade-in">
+        Be first to experience new worlds, get exclusive content, behind-the-scenes insights, and connect with fellow fantasy enthusiasts. Your epic journey starts here.
+      </p>
+
+      <div class="beehiiv-form-container fade-in">
+        <iframe src="https://subscribe-forms.beehiiv.com/59d7d900-a729-4ff8-a143-80a06f60f79c" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Mobile-First Footer -->
+  <footer id="about">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Huis of Kay</h4>
+          <p>Creating epic fantasy worlds with immersive storytelling, compelling characters, and unforgettable adventures across multiple series.</p>
+          <div class="social-links">
+            <a href="https://youtube.com/@huisofkay" target="_blank" rel="noopener">YT</a>
+            <a href="https://instagram.com/huisofkay" target="_blank" rel="noopener">IG</a>
+            <a href="https://tiktok.com/@huisofkay" target="_blank" rel="noopener">TT</a>
+            <a href="https://twitter.com/huisofkay" target="_blank" rel="noopener">X</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Current Series</h4>
+          <a href="#series">The Quantum Omen</a>
+          <p>Foundation Release: August 1, 2025</p>
+          <p>5-book contemporary fantasy series blending Igbo culture with mystical technology</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Coming Soon</h4>
+          <a href="#series">The Veiled Divinity</a>
+          <a href="#series">The Veiled Flame Saga</a>
+          <a href="#series">Alabaster Egg</a>
+          <a href="#series">Creature of Aelyria</a>
+        </div>
+
+        <div class="footer-section">
+          <h4>Community</h4>
+          <a href="#community">Newsletter Signup</a>
+          <a href="https://youtube.com/@huisofkay" target="_blank" rel="noopener">YouTube Channel</a>
+          <a href="mailto:hello@huisofkay.studio">Contact</a>
+          <p>Connect with fellow fantasy enthusiasts and be part of building these worlds together.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2025 Huis of Kay. All rights reserved.<br>
+          <a href="./content_license.html">Content License</a> | 
+          <a href="./privacy_policy.html">Privacy Policy</a> | 
+          <a href="./legal_disclaimer.html">Legal Disclaimer</a>
+        </p>
+        <p style="margin-top: 1rem; font-style: italic; color: var(--accent-gold);">
+          "Quality storytelling across multiple fantasy universes"
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Enhanced JavaScript for Mobile-First Experience -->
+  <script>
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const header = document.getElementById('header');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Close mobile menu when clicking on links
+    navLinks.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.textContent = '☰';
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.textContent = '☰';
+      }
+    });
+
+    // Enhanced smooth scrolling with mobile offset
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerHeight = header.offsetHeight;
+          const targetPosition = target.offsetTop - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Header scroll effect
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > 100) {
+        header.classList.add('header-scroll');
+      } else {
+        header.classList.remove('header-scroll');
+      }
+
+      // Hide header on scroll down, show on scroll up (mobile)
+      if (window.innerWidth <= 768) {
+        if (scrollTop > lastScrollTop && scrollTop > 200) {
+          header.style.transform = 'translateY(-100%)';
+        } else {
+          header.style.transform = 'translateY(0)';
+        }
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+
+    // Enhanced fade in animation with Intersection Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Add staggered delay for better mobile experience
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Optimized image loading
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      img.addEventListener('load', () => {
+        img.style.opacity = '1';
+      });
+      
+      img.addEventListener('error', () => {
+        img.style.opacity = '0.5';
+      });
+    });
+
+    // Beehiiv embed script with error handling
+    function loadBeehiivScript() {
+      const script = document.createElement('script');
+      script.src = 'https://subscribe-forms.beehiiv.com/embed.js';
+      script.async = true;
+      script.onerror = () => {
+        console.log('Beehiiv script failed to load');
+      };
+      document.body.appendChild(script);
+    }
+
+    // Load Beehiiv script after page load for better performance
+    window.addEventListener('load', loadBeehiivScript);
+
+    // Remove loading class after page is fully loaded
+    window.addEventListener('load', () => {
+      document.body.classList.remove('loading');
+    });
+
+    // Touch-friendly hover effects for mobile
+    if ('ontouchstart' in window) {
+      const hoverElements = document.querySelectorAll('.series-card, .btn-primary, .btn-secondary');
+      hoverElements.forEach(el => {
+        el.addEventListener('touchstart', () => {
+          el.classList.add('touch-hover');
+        });
+        
+        el.addEventListener('touchend', () => {
+          setTimeout(() => {
+            el.classList.remove('touch-hover');
+          }, 150);
+        });
+      });
+    }
+
+    // Performance monitoring for mobile
+    if ('performance' in window) {
+      window.addEventListener('load', () => {
+        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+        if (loadTime > 3000) {
+          console.log('Page load time is slow:', loadTime + 'ms');
+        }
+      });
+    }
+
+    // Viewport height fix for mobile browsers
+    function setViewportHeight() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    setViewportHeight();
+    window.addEventListener('resize', setViewportHeight);
+    window.addEventListener('orientationchange', setViewportHeight);
+
+    // Preload critical images for better performance
+    const criticalImages = [
+      './The_Quantum_Omen_ Awakening_Cover_Page.png',
+      './TQO-Book1_Cover-Page.png'
+    ];
+
+    criticalImages.forEach(src => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = src;
+      document.head.appendChild(link);
+    });
+  </script>
 
 </body>
 </html>
