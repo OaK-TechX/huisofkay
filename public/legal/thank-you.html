@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You – Huis of Kay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0e10;
+      --accent: #00ffe0;
+      --text: #ffffff;
+      --muted: #aaa;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
+      max-width: 600px;
+      text-align: left;
+      display: inline-block;
+    }
+    
+    li {
+        margin-bottom: 0.75rem;
+    }
+
+    .bonus-box {
+      border: 2px dashed var(--accent);
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      background: #1a1a1e;
+      margin-top: 1rem;
+      max-width: 600px;
+      width: 100%;
+    }
+    
+    .bonus-box p {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    a.button {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      background: var(--accent);
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+      font-size: 1rem;
+    }
+
+    a.button:hover {
+      background: #00cbbd;
+    }
+
+    .launch-date {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-top: 3rem;
+    }
+
+    footer {
+      margin-top: auto;
+      padding-top: 2rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>✅ You’re In.</h1>
+  <p>Welcome, Story Seeker. You’ve joined <strong>The Circle</strong> — and memory remembers you.</p>
+
+  <p>Stay tuned for:</p>
+  <ul>
+    <li>📘 Story Episodes</li>
+    <li>🎧 Audiobook Drops</li>
+    <li>🎨 Comic Sneak Peeks</li>
+    <li>🔮 Lore Puzzles & Digital Collectibles</li>
+  </ul>
+
+  <div class="bonus-box">
+    <p>🎁 As a thank you, here’s your Early Bird Bonus:</p>
+    <a class="button" href="https://yourdownloadlink.com" target="_blank">Download the Quantum Glyph Pack</a>
+  </div>
+
+  <p class="launch-date">📅 The Quantum Omen launches July 15, 2025</p>
+
+  <footer>
+    © 2025 Huis of Kay – Stories born of memory and code.
+  </footer>
+
+</body>
+</html>
