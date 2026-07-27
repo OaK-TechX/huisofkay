@@ -19,7 +19,24 @@ export async function generateMetadata({
   const { slug } = await params;
   const vm = await container.catalogPresenter.buildWatch(slug);
   if (!vm) return {};
-  return { title: vm.documentTitle };
+  return {
+    title: vm.documentTitle,
+    description: vm.synopsis,
+    alternates: { canonical: vm.canonicalPath },
+    openGraph: {
+      title: vm.documentTitle,
+      description: vm.synopsis,
+      url: vm.canonicalPath,
+      type: "video.other",
+      images: [vm.ogImageUrl],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: vm.documentTitle,
+      description: vm.synopsis,
+      images: [vm.ogImageUrl],
+    },
+  };
 }
 
 // Route = controller: resolve the slug to a WatchVM, or 404.

@@ -24,6 +24,7 @@ const SERIES: readonly Series[] = [
         synopsis:
           "Sumi's living ink-mark awakens. One strike, one clash of ink against erasure, one thread of fate pulled taut.",
         runtimeSeconds: 43,
+        publishedAt: "2026-07-27",
         youtubeId: "1btIw-_eisg",
         thumbnailUrl: "/media/inkborne/ep01.png",
         vertical: true,

@@ -10,6 +10,7 @@ export interface Episode {
   readonly title: string;
   readonly synopsis: string;
   readonly runtimeSeconds: number;
+  readonly publishedAt: string; // ISO 8601 date
   readonly youtubeId: string;
   readonly thumbnailUrl: string;
   readonly vertical: boolean;

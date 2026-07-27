@@ -56,4 +56,7 @@ export interface WatchVM {
   readonly subscribeHref: string;
   readonly dropsHref: string;
   readonly documentTitle: string;
+  readonly ogImageUrl: string;
+  readonly canonicalPath: string;
+  readonly jsonLd: object;
 }

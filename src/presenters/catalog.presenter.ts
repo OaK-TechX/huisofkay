@@ -10,7 +10,7 @@ import type {
   UpcomingCardVM,
   WatchVM,
 } from "@/viewmodels/catalog.vm";
-import { siteConfig } from "@/config/site";
+import { episodeVideoLd } from "@/lib/structured-data";
 
 // Presenter: maps domain -> view models. Every bit of view-shaping logic lives
 // here so views never compute anything. Depends on the service abstraction only.
@@ -66,7 +66,10 @@ export class CatalogPresenter {
       vertical: episode.vertical,
       subscribeHref: routes.youtubeChannel(),
       dropsHref: routes.subscribeAnchor(),
-      documentTitle: `${series.title} - Episode ${episode.number}: ${episode.title} | ${siteConfig.name}`,
+      documentTitle: `${series.title} - Episode ${episode.number}: ${episode.title}`,
+      ogImageUrl: episode.thumbnailUrl,
+      canonicalPath: routes.watch(episode.slug),
+      jsonLd: episodeVideoLd(series, episode),
     };
   }
 

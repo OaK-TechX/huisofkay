@@ -1,10 +1,12 @@
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 import type { WatchVM } from "@/viewmodels/catalog.vm";
 
 // Pure view. The player container adapts to vertical (Shorts) vs landscape.
 export default function WatchView({ vm }: { vm: WatchVM }) {
   return (
     <div className="pt-16">
+      <JsonLd data={vm.jsonLd} />
       <div className="bg-black flex justify-center">
         {vm.vertical ? (
           <div className="relative w-full max-w-[420px] aspect-[9/16] max-h-[85vh]">

@@ -19,10 +19,6 @@ export const siteConfig = {
     wordmarkUrl: "/brand/wordmark.png",
     bannerUrl: "/brand/banner.png",
   },
-  newsletter: {
-    beehiivFormUrl:
-      "https://subscribe-forms.beehiiv.com/59d7d900-a729-4ff8-a143-80a06f60f79c",
-  },
   socials: [
     { label: "YouTube", href: "https://youtube.com/@huisofkay" },
     { label: "TikTok", href: "https://tiktok.com/@huisofkay" },
