@@ -12,7 +12,9 @@ export default function HomeView({ vm }: { vm: HomeVM }) {
         {vm.rows.map((row) => (
           <MediaRow key={row.key} row={row} />
         ))}
-        <UpcomingSection section={vm.upcoming} />
+        {vm.upcoming.cards.length > 0 ? (
+          <UpcomingSection section={vm.upcoming} />
+        ) : null}
       </div>
     </>
   );
