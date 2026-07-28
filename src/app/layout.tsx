@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import JsonLd from "@/components/JsonLd";
 import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 import { organizationLd, websiteLd } from "@/lib/structured-data";
 import { siteConfig } from "@/config/site";
 
@@ -83,6 +85,9 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <SiteFooter />
         <ServiceWorkerRegister />
+        <Suspense fallback={null}>
+          <AnalyticsTracker />
+        </Suspense>
       </body>
     </html>
   );

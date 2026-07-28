@@ -95,13 +95,16 @@ export async function saveEpisodeAction(
     return { error: e instanceof Error ? e.message : "Failed to save episode." };
   }
   revalidateCatalog();
+  revalidatePath(`/watch/${input.slug}`);
   redirect("/admin/episodes");
 }
 
 export async function deleteEpisodeAction(formData: FormData): Promise<void> {
   await requireAuth();
-  await container.adminCatalogService.deleteEpisode(str(formData, "slug"));
+  const slug = str(formData, "slug");
+  await container.adminCatalogService.deleteEpisode(slug);
   revalidateCatalog();
+  revalidatePath(`/watch/${slug}`);
   redirect("/admin/episodes");
 }
 
