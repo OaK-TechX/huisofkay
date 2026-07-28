@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { saveEpisodeAction, type ActionState } from "@/app/admin/actions";
 import { Field, TextArea, Select, Checkbox } from "@/components/admin/fields";
+import ImageUploadField from "@/components/admin/ImageUploadField";
 import type { Episode } from "@/domain/models";
 
 export interface EpisodeFormValues extends Partial<Episode> {
@@ -42,7 +43,7 @@ export default function EpisodeForm({
         <Field label="YouTube ID" name="youtubeId" defaultValue={episode?.youtubeId} required placeholder="e.g. 1btIw-_eisg" />
         <Field label="Published at (ISO date)" name="publishedAt" defaultValue={episode?.publishedAt} placeholder="2026-07-27" />
       </div>
-      <Field label="Thumbnail URL" name="thumbnailUrl" defaultValue={episode?.thumbnailUrl} placeholder="/media/.../ep.png" />
+      <ImageUploadField label="Thumbnail" name="thumbnailUrl" defaultValue={episode?.thumbnailUrl} placeholder="/media/.../ep.png" />
       <Checkbox label="Vertical (9:16 Short)" name="vertical" defaultChecked={episode?.vertical ?? true} />
       <button
         type="submit"

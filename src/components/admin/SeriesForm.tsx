@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { saveSeriesAction, type ActionState } from "@/app/admin/actions";
 import { Field, TextArea, Select } from "@/components/admin/fields";
+import ImageUploadField from "@/components/admin/ImageUploadField";
 import type { Series } from "@/domain/models";
 
 export default function SeriesForm({ series }: { series?: Series }) {
@@ -22,8 +23,8 @@ export default function SeriesForm({ series }: { series?: Series }) {
       <Field label="Tagline" name="tagline" defaultValue={series?.tagline} />
       <TextArea label="Logline" name="logline" defaultValue={series?.logline} rows={3} />
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Poster URL" name="posterUrl" defaultValue={series?.posterUrl} placeholder="/media/.../poster.png" />
-        <Field label="Hero URL" name="heroUrl" defaultValue={series?.heroUrl} placeholder="/media/.../hero.png" />
+        <ImageUploadField label="Poster" name="posterUrl" defaultValue={series?.posterUrl} placeholder="/media/.../poster.png" />
+        <ImageUploadField label="Hero" name="heroUrl" defaultValue={series?.heroUrl} placeholder="/media/.../hero.png" />
       </div>
       <div className="grid gap-4 sm:grid-cols-3">
         <Field label="Accent color" name="accentColor" defaultValue={series?.accentColor ?? "#C8102E"} />
