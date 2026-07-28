@@ -2,6 +2,7 @@ import type { CatalogService } from "@/services/catalog.service";
 import type { Episode, EpisodeInSeries, Series } from "@/domain/models";
 import { routes } from "@/lib/routes";
 import { formatRuntime } from "@/lib/format";
+import { categoryForSlug, orderedCategories } from "@/lib/categories";
 import type {
   HeroVM,
   HomeVM,
@@ -31,11 +32,7 @@ export class CatalogPresenter {
         title: "Now Streaming",
         cards: streaming.map((item) => this.toEpisodeCard(item)),
       },
-      {
-        key: "series",
-        title: "Series",
-        cards: seriesList.map((series) => this.toSeriesCard(series)),
-      },
+      ...this.toCategoryRows(seriesList),
     ];
 
     const upcomingCards: UpcomingCardVM[] = upcoming.map((world) => ({
@@ -56,6 +53,8 @@ export class CatalogPresenter {
     const found = await this.service.findEpisodeBySlug(episodeSlug);
     if (!found) return null;
     const { series, episode } = found;
+    const next = await this.service.getNextStreamingEpisode(episode.slug);
+    const nextIsReplay = next ? next.episode.slug === episode.slug : false;
     return {
       seriesTitle: series.title,
       episodeLabel: `Episode ${episode.number}`,
@@ -70,7 +69,31 @@ export class CatalogPresenter {
       ogImageUrl: episode.thumbnailUrl,
       canonicalPath: routes.watch(episode.slug),
       jsonLd: episodeVideoLd(series, episode),
+      nextHref: next ? routes.watch(next.episode.slug) : null,
+      nextSeriesTitle: next ? next.series.title : null,
+      nextEpisodeLabel: next
+        ? `Episode ${next.episode.number}: ${next.episode.title}`
+        : null,
+      nextIsReplay,
     };
+  }
+
+  // Groups the slate into Netflix/Prime-style category rows in a stable order.
+  private toCategoryRows(seriesList: readonly Series[]): MediaRowVM[] {
+    const byCategory = new Map<string, Series[]>();
+    for (const series of seriesList) {
+      const category = categoryForSlug(series.slug);
+      const bucket = byCategory.get(category) ?? [];
+      bucket.push(series);
+      byCategory.set(category, bucket);
+    }
+    return orderedCategories([...byCategory.keys()]).map((category) => ({
+      key: `cat-${category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+      title: category,
+      cards: (byCategory.get(category) ?? []).map((series) =>
+        this.toSeriesCard(series),
+      ),
+    }));
   }
 
   private toHero({ series, episode }: EpisodeInSeries): HeroVM {

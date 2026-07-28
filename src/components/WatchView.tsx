@@ -39,6 +39,23 @@ export default function WatchView({ vm }: { vm: WatchVM }) {
         </h1>
         <p className="mt-3 text-paper/80 max-w-2xl">{vm.synopsis}</p>
         <p className="mt-2 text-sm text-paper/50">{vm.meta}</p>
+
+        {vm.nextHref ? (
+          <div className="mt-6 flex flex-col gap-2">
+            <Link
+              href={vm.nextHref}
+              className="inline-flex w-fit items-center gap-2 rounded bg-crimson px-6 py-3 text-base font-semibold text-white transition hover:brightness-110"
+            >
+              <span aria-hidden>&#9654;</span> Play Next
+            </Link>
+            <p className="text-sm text-paper/50">
+              {vm.nextIsReplay
+                ? "Loops back to the start - new episodes weekly."
+                : `Up next: ${vm.nextSeriesTitle} - ${vm.nextEpisodeLabel}`}
+            </p>
+          </div>
+        ) : null}
+
         <div className="mt-6 flex flex-wrap gap-3">
           <a
             href={vm.subscribeHref}
@@ -50,7 +67,7 @@ export default function WatchView({ vm }: { vm: WatchVM }) {
           </a>
           <Link
             href={vm.dropsHref}
-            className="rounded bg-crimson px-5 py-2 text-sm font-semibold text-white hover:brightness-110 transition"
+            className="rounded bg-white/10 px-5 py-2 text-sm font-semibold text-paper hover:bg-white/20 transition"
           >
             Get episode drops
           </Link>

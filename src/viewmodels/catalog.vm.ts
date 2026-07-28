@@ -59,4 +59,9 @@ export interface WatchVM {
   readonly ogImageUrl: string;
   readonly canonicalPath: string;
   readonly jsonLd: object;
+  // Play-next: the following streaming episode (wraps to the first when last).
+  readonly nextHref: string | null;
+  readonly nextSeriesTitle: string | null;
+  readonly nextEpisodeLabel: string | null;
+  readonly nextIsReplay: boolean;
 }

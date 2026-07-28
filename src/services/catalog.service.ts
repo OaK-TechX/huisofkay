@@ -36,6 +36,19 @@ export class CatalogService {
     return null;
   }
 
+  /**
+   * Business rule: the "next" episode is the following streaming episode in
+   * catalog order, wrapping back to the first when the current one is last.
+   * Returns null only when there are no streaming episodes at all.
+   */
+  async getNextStreamingEpisode(currentSlug: string): Promise<EpisodeInSeries | null> {
+    const streaming = await this.getStreamingEpisodes();
+    if (streaming.length === 0) return null;
+    const index = streaming.findIndex((item) => item.episode.slug === currentSlug);
+    if (index === -1) return streaming[0] ?? null;
+    return streaming[(index + 1) % streaming.length] ?? null;
+  }
+
   /** Business rule: featured = admin setting (DB), else configured slug, else the first streaming episode. */
   async getFeaturedEpisode(): Promise<EpisodeInSeries | null> {
     const dbSlug = await this.repository.getFeaturedEpisodeSlug();
