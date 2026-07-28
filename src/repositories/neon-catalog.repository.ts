@@ -1,10 +1,11 @@
-import { asc } from "drizzle-orm";
+import { asc, eq } from "drizzle-orm";
 import type { CatalogRepository } from "@/repositories/catalog.repository";
 import type { Episode, Series, UpcomingWorld } from "@/domain/models";
 import { getDb } from "@/lib/db";
 import {
   episodes as episodesTable,
   series as seriesTable,
+  settings as settingsTable,
   upcomingWorlds as upcomingTable,
   type EpisodeRow,
   type SeriesRow,
@@ -33,6 +34,16 @@ export class NeonCatalogRepository implements CatalogRepository {
       .from(upcomingTable)
       .orderBy(asc(upcomingTable.sortOrder));
     return rows.map((u) => ({ slug: u.slug, title: u.title, note: u.note }));
+  }
+
+  async getFeaturedEpisodeSlug(): Promise<string | null> {
+    const db = getDb();
+    const rows = await db
+      .select()
+      .from(settingsTable)
+      .where(eq(settingsTable.key, "featured_episode_slug"))
+      .limit(1);
+    return rows[0]?.value ?? null;
   }
 
   private toSeries(s: SeriesRow, allEpisodes: EpisodeRow[]): Series {

@@ -36,11 +36,13 @@ export class CatalogService {
     return null;
   }
 
-  /** Business rule: the featured item is the configured episode, else the first streaming one. */
+  /** Business rule: featured = admin setting (DB), else configured slug, else the first streaming episode. */
   async getFeaturedEpisode(): Promise<EpisodeInSeries | null> {
-    if (this.options.featuredEpisodeSlug) {
-      const configured = await this.findEpisodeBySlug(this.options.featuredEpisodeSlug);
-      if (configured) return configured;
+    const dbSlug = await this.repository.getFeaturedEpisodeSlug();
+    const slug = dbSlug ?? this.options.featuredEpisodeSlug;
+    if (slug) {
+      const found = await this.findEpisodeBySlug(slug);
+      if (found) return found;
     }
     const streaming = await this.getStreamingEpisodes();
     return streaming[0] ?? null;

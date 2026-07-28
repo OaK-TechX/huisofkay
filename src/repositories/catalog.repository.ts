@@ -7,4 +7,6 @@ import type { Series, UpcomingWorld } from "@/domain/models";
 export interface CatalogRepository {
   getAllSeries(): Promise<readonly Series[]>;
   getUpcomingWorlds(): Promise<readonly UpcomingWorld[]>;
+  /** Admin-configured featured episode slug, or null to fall back to config. */
+  getFeaturedEpisodeSlug(): Promise<string | null>;
 }

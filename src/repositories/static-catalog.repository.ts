@@ -60,4 +60,8 @@ export class StaticCatalogRepository implements CatalogRepository {
   async getUpcomingWorlds(): Promise<readonly UpcomingWorld[]> {
     return UPCOMING;
   }
+
+  async getFeaturedEpisodeSlug(): Promise<string | null> {
+    return null; // no DB: caller falls back to site config
+  }
 }
