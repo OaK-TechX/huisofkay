@@ -3,6 +3,7 @@ import type { NextAuthConfig } from "next-auth";
 // Edge-safe base config (NO database / bcrypt here) so it can be imported by
 // middleware. The Credentials provider with DB access lives in auth.ts.
 export const authConfig = {
+  trustHost: true,
   pages: { signIn: "/admin/login" },
   session: { strategy: "jwt" },
   providers: [],
