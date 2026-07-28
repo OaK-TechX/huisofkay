@@ -5,6 +5,9 @@ import WatchView from "@/components/WatchView";
 
 type RouteParams = { slug: string };
 
+// ISR so watch pages reflect DB edits at runtime.
+export const revalidate = 60;
+
 // Pre-render a static page per streaming episode.
 export async function generateStaticParams(): Promise<RouteParams[]> {
   const episodes = await container.catalogService.getStreamingEpisodes();
